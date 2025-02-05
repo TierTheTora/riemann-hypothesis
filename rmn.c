@@ -26,6 +26,14 @@ double Zeta(const int s, const long long max) {
 	if (s > 1) {
 		return gsl_sf_zeta(s);
 	}
+	else if (s == 1) {
+		double res = 0.0;
+		res = 0.0;
+		for (long long n = 1; n <= max; ++n) {
+			res += 1.0/n;
+		}
+		return res;
+	}
 	gsl_complex zeta = Zta(s, max);
 	const double TT = Theta (s);
 	double Z = GSL_REAL(zeta) * cos(TT) + GSL_IMAG(zeta) * sin(TT);
